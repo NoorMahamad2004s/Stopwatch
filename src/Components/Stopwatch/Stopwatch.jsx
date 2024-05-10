@@ -9,17 +9,12 @@ const Stopwatch = ()=>{
     const[time, setTime] = useState(0);
     const[timerOn, setTimerOn] = useState(false);
 
-    const formatTime = (seconds) => {
-       
+    const formatTime = (seconds)=>{
+        const minutes = Math.floor(seconds/60);
+        const remainingSecs = seconds%60;
+        
 
-        const minutes = Math.floor(seconds / 60);
-        const remainingSecs = seconds % 60;
-
-       
-        const displayMinutes = minutes < 10 ? `0${minutes}` : minutes;
-        const displaySeconds = remainingSecs < 10 ? `0${remainingSecs}` : remainingSecs;
-
-        return `${displayMinutes}:${displaySeconds}`;
+        return `${minutes}:${remainingSecs < 10 ? "0" : ""}${remainingSecs}`;
     }
 
 
