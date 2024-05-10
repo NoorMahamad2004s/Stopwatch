@@ -12,10 +12,9 @@ const Stopwatch = ()=>{
     const formatTime = (seconds)=>{
         const minutes = Math.floor(seconds/60);
         const remainingSecs = seconds%60;
-        const formattedMinutes = String(minutes).padStart(2, '0');
-        const formattedSeconds = String(remainingSecs).padStart(2, '0');
+        
 
-        return `Time: ${formattedMinutes}:${formattedSeconds}`;
+        return `${minutes}:${remainingSecs<10?"0":""}${remainingSecs}`
     }
 
 
@@ -50,7 +49,7 @@ const Stopwatch = ()=>{
         <div className="container">
             <h2 className="heading">Stopwatch</h2>
 
-            <h4 className='timer'>{formatTime(time)}</h4>
+            <h4 className='timer'>Time: {formatTime(time)}</h4>
 
             <div className="btns">
                 <button className="startBtn" onClick={handleStart}>
