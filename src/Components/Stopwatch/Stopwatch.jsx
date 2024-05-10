@@ -9,29 +9,30 @@ const Stopwatch = ()=>{
     const[time, setTime] = useState(0);
     const[timerOn, setTimerOn] = useState(false);
 
-    // const formatTime = (seconds)=>{
-    //     const minutes = Math.floor(seconds/60);
-    //     const remainingSecs = seconds%60;
+    const formatTime = (seconds)=>{
+        const minutes = Math.floor(seconds/60);
+        const remainingSecs = seconds%60;
         
 
-    //     return `${minutes}:${remainingSecs < 10 ? "0" : ""}${remainingSecs}`;
-    // }
+        return `${minutes}:${remainingSecs < 10 ? "0" : ""}${remainingSecs}`;
+    }
 
 
     useEffect(()=>{
 
         let myTimer;
         if(timerOn){
-            myTimer = setInterval(()=>setTime(time+1),1000);
+            myTimer = setInterval(()=>{
+                setTime(prevTime=>prevTime+1);
+            },1000);
         }
 
         return ()=>clearInterval(myTimer);
 
-    },[timerOn,time]);
+    },[timerOn]);
 
 
-    const minutes = Math.floor(time/60);
-    const remainingSecs = time%60;
+
 
 
     const handleStart = ()=>{
@@ -50,7 +51,7 @@ const Stopwatch = ()=>{
         <div className="container">
             <h2 className="heading">Stopwatch</h2>
 
-            <h4 className='timer'>Time: {minutes.toString().padStart(1, "0")}:{remainingSecs < 10 ? "0" : ""}{remainingSecs.toString().padStart(1, "0")}</h4>
+            <h4 className='timer'>Time: {formatTime(time)}</h4>
 
             <div className="btns">
                 <button className="startBtn" onClick={handleStart}>
