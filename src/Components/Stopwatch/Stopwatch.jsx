@@ -14,7 +14,7 @@ const Stopwatch = ()=>{
         const remainingSecs = seconds%60;
         
 
-        return `${minutes}:${remainingSecs<10?"0":""}${remainingSecs}`
+        return `Time: ${minutes}:${remainingSecs < 10 ? "0" : ""}${remainingSecs}`;
     }
 
 
@@ -49,7 +49,7 @@ const Stopwatch = ()=>{
         <div className="container">
             <h2 className="heading">Stopwatch</h2>
 
-            <h4 className='timer'>Time: {formatTime(time)}</h4>
+            <h4 className='timer'>{formatTime(time)}</h4>
 
             <div className="btns">
                 <button className="startBtn" onClick={handleStart}>
