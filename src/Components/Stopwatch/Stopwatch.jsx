@@ -10,9 +10,7 @@ const Stopwatch = ()=>{
     const[timerOn, setTimerOn] = useState(false);
 
     const formatTime = (seconds) => {
-        if (seconds === 0) {
-            return '0:00';
-        }
+       
 
         const minutes = Math.floor(seconds / 60);
         const remainingSecs = seconds % 60;
